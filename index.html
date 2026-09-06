@@ -1,41 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-widt
-     , initial-scale=1.0" />
-     
-    <!--source of design-->
-    <link rel="stylesheet" href="style.css">
-    <script  src="main.js"></script>
-    
-    <title>code and cypher</title>
-    
-  </head>
-  <body>
-      <div class="mainContainer">
-        <h1>Code and Cypher</h1>
-        <label for="original">Original Message</labe>
-        <input id="original" type="text" placeholder="Type your text here!"/>
-        <label for="shift">Shift</label>
-        <br/>
-        <input
-          id="shift"
-          type="number"
-          placeholder="Type a number"
-          max="26"
-          min="-26"/>
-          
-        <button onclick="function1()" id="btn-enc">Encrypt</button>
-        <br />
-        <label for="encrypted">Encrypted Message</label>
-        <input id="encrypted" type="text" value="" readonly />
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SSC Result 2026 · Humanities</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="mark-block">
+      <svg class="emblem" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="20" cy="20" r="19" stroke="#C7A552" stroke-width="1.4"/>
+        <path d="M20 8 L23.6 16.6 L33 17.4 L25.8 23.4 L28 32.6 L20 27.4 L12 32.6 L14.2 23.4 L7 17.4 L16.4 16.6 Z" fill="#C7A552"/>
+      </svg>
+      <div class="mark-text">
+        <h1>SSC Result <span>2026</span></h1>
+        <p>Humanities Group &middot; Secondary School Certificate Examination</p>
+      </div>
+    </div>
+    <div class="masthead-note">
+      <p>Sessions 2021–22 to 2024–25</p>
+      <p id="dataset-count">Loading register&hellip;</p>
+    </div>
+  </div>
+</header>
+
+<section class="stat-strip" id="stat-strip" aria-label="Result summary">
+  <div class="stat"><span class="stat-value" id="stat-total">—</span><span class="stat-label">Appeared</span></div>
+  <div class="stat"><span class="stat-value" id="stat-passed">—</span><span class="stat-label">Passed</span></div>
+  <div class="stat gold"><span class="stat-value" id="stat-gpa5">—</span><span class="stat-label">GPA&nbsp;5.00</span></div>
+  <div class="stat"><span class="stat-value" id="stat-rate">—</span><span class="stat-label">Pass rate</span></div>
+  <div class="stat fail"><span class="stat-value" id="stat-failed">—</span><span class="stat-label">Failed</span></div>
+</section>
+
+<main class="content">
+
+  <section class="search-panel" aria-label="Search results">
+    <div class="search-row">
+      <input type="text" id="search-input" class="search-input" placeholder="Search by name, father's name, mother's name, roll or registration no." autocomplete="off">
+      <button id="search-clear" class="btn-ghost" type="button" title="Clear search">Clear</button>
+    </div>
+    <div class="field-chips" role="group" aria-label="Search field">
+      <button class="chip active" data-field="all">All fields</button>
+      <button class="chip" data-field="n">Name</button>
+      <button class="chip" data-field="f">Father's name</button>
+      <button class="chip" data-field="m">Mother's name</button>
+      <button class="chip" data-field="r">Roll no.</button>
+      <button class="chip" data-field="g">Reg. no.</button>
+    </div>
+
+    <div class="filters-row">
+      <div class="filter-field filter-wide">
+        <label for="f-institute">Institute</label>
+        <input list="institute-list" id="f-institute" placeholder="All institutes" autocomplete="off">
+        <datalist id="institute-list"></datalist>
+      </div>
+      <div class="filter-field">
+        <label for="f-center">Center</label>
+        <select id="f-center"><option value="">All centers</option></select>
+      </div>
+      <div class="filter-field">
+        <label for="f-gpa">GPA</label>
+        <select id="f-gpa">
+          <option value="">Any GPA</option>
+          <option value="5.00">GPA 5.00</option>
+          <option value="4-4.99">4.00 – 4.99</option>
+          <option value="3.5-3.99">3.50 – 3.99</option>
+          <option value="3-3.49">3.00 – 3.49</option>
+          <option value="2-2.99">2.00 – 2.99</option>
+          <option value="1-1.99">1.00 – 1.99</option>
+        </select>
+      </div>
+      <div class="filter-field">
+        <label for="f-status">Result</label>
+        <select id="f-status">
+          <option value="">All results</option>
+          <option value="pass">Passed</option>
+          <option value="fail">Failed</option>
+          <option value="absent">Absent</option>
+          <option value="reported">Reported</option>
+        </select>
+      </div>
+      <div class="filter-field">
+        <label for="f-session">Session</label>
+        <select id="f-session"><option value="">All sessions</option></select>
+      </div>
+      <div class="filter-field">
+        <label for="f-type">Type</label>
+        <select id="f-type">
+          <option value="">Regular &amp; irregular</option>
+          <option value="REGULAR">Regular</option>
+          <option value="IRREGULAR">Irregular</option>
+          <option value="IMPROVEMENT">Improvement</option>
+        </select>
+      </div>
+      <button id="filters-reset" class="btn-ghost" type="button">Reset filters</button>
+    </div>
+  </section>
+
+  <section class="results-panel">
+    <div class="results-meta">
+      <p id="results-count">Loading&hellip;</p>
+      <div class="sort-control">
+        <label for="sort-select">Sort by</label>
+        <select id="sort-select">
+          <option value="roll-asc">Roll no. (ascending)</option>
+          <option value="roll-desc">Roll no. (descending)</option>
+          <option value="gpa-desc">GPA (highest first)</option>
+          <option value="gpa-asc">GPA (lowest first)</option>
+          <option value="name-asc">Name (A–Z)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th class="col-roll">Roll No.</th>
+            <th class="col-name">Name</th>
+            <th class="col-father">Father's Name</th>
+            <th class="col-inst">Institute</th>
+            <th class="col-center">Center</th>
+            <th class="col-result">Result</th>
+          </tr>
+        </thead>
+        <tbody id="results-body">
+        </tbody>
+      </table>
+    </div>
+
+    <div class="empty-state" id="empty-state" hidden>
+      <p>No records match this search.</p>
+      <p class="empty-sub">Check the spelling, or clear a filter — the register holds 57,922 entries.</p>
+    </div>
+
+    <div class="pagination" id="pagination"></div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>Data sourced from the uploaded SSC 2026 Humanities register. Built for quick lookup only — for the official mark sheet, contact your institute or the education board.</p>
+</footer>
+
+<!-- Result card overlay -->
+<div class="overlay" id="overlay" hidden>
+  <div class="card-backdrop" id="card-backdrop"></div>
+  <div class="result-card" id="result-card" role="dialog" aria-modal="true" aria-labelledby="card-name">
+    <button class="card-close" id="card-close" aria-label="Close result card">&times;</button>
+    <div class="card-letterhead">
+      <svg width="30" height="30" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="20" cy="20" r="19" stroke="#C7A552" stroke-width="1.4"/>
+        <path d="M20 8 L23.6 16.6 L33 17.4 L25.8 23.4 L28 32.6 L20 27.4 L12 32.6 L14.2 23.4 L7 17.4 L16.4 16.6 Z" fill="#C7A552"/>
+      </svg>
+      <div>
+        <p class="card-eyebrow">Secondary School Certificate Examination 2026</p>
+        <p class="card-eyebrow-sub">Humanities Group</p>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <div class="card-id">
+        <h2 id="card-name">—</h2>
+        <p id="card-roll" class="card-roll">Roll —</p>
       </div>
 
-    
-  <div class="footer">
-    <p>Edited by <a href="https://tufayal10.github.io/home/" style="font-size : 35px;">Tufayal</a></p>
+      <dl class="card-fields" id="card-fields"></dl>
+
+      <div class="card-verdict" id="card-verdict">
+        <span class="verdict-label">Result</span>
+        <span class="verdict-value" id="card-result">—</span>
+      </div>
+
+      <h3 class="card-subheading">Subject-wise Grade</h3>
+      <table class="card-subjects" id="card-subjects">
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <div class="card-actions">
+      <button id="card-print" class="btn-primary" type="button">Print mark sheet</button>
+    </div>
   </div>
-  
-  </body>
+</div>
+
+<div class="loading-veil" id="loading-veil">
+  <div class="loading-box" id="loading-box">
+    <p>Loading the register&hellip;</p>
+    <div class="loading-bar"><div class="loading-bar-fill" id="loading-bar-fill"></div></div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
 </html>
