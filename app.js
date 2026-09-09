@@ -53,7 +53,7 @@
 
   function loadData() {
     const barFill = el("loading-bar-fill");
-    fetch("results.json")
+    fetch("jingkalala.json")
       .then((r) => {
         if (!r.ok) throw new Error("Network response was not ok");
         return r.json();
